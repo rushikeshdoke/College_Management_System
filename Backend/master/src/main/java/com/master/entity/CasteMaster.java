@@ -1,5 +1,6 @@
 package com.master.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class CasteMaster extends Auditable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long casteId;
 	
+	@Column(unique = true, nullable = false)
 	private String casteName;
 	
 }

@@ -2,9 +2,11 @@ package com.master.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 
 @Data
+@MappedSuperclass
 public class Auditable {
 
 	private Long createdBy;

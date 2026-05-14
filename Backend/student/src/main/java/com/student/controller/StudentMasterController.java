@@ -1,0 +1,39 @@
+package com.student.controller;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.student.entity.StudentMaster;
+import com.student.request.dto.AddStudentDto;
+import com.student.service.StudentMasterService;
+
+@RestController
+@RequestMapping("/student")
+public class StudentMasterController {
+	
+	@Autowired
+	private StudentMasterService studentMasterService;
+
+	@PostMapping("/add")
+	public ResponseEntity<Map<String, Object>> addStudent(@RequestBody AddStudentDto addStudentDto){
+		return studentMasterService.addStudent(addStudentDto);		
+	}
+	
+	@GetMapping("/list")
+	public ResponseEntity<Map<String, Object>> getStudentList(){
+		return studentMasterService.getStudentList();
+	}
+	
+	@GetMapping("/has-id/{studentId}")
+	public ResponseEntity<Map<String, Object>> getStudentById(@PathVariable Long studentId){
+		return studentMasterService.getStudentById(studentId);
+	}
+}
